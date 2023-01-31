@@ -1,54 +1,21 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-
-using namespace std;
-string morseStrings[91];
-void initArray();
+#include "morse.h"
 
 int main()
 {
-    initArray();
-    return 0;
-}
+    string conversionType, inputFile, outputFile;
+    cout << "What would you like to convert? ";
+    cin >> conversionType >> inputFile >> outputFile;
 
-void initArray()
-{
-    morseStrings['A'] = ".-";
-    morseStrings['B'] = "-...";
-    morseStrings['C'] = "-.-.";
-    morseStrings['D'] = "-..";
-    morseStrings['E'] = ".";
-    morseStrings['F'] = "..-.";
-    morseStrings['G'] = "--.";
-    morseStrings['H'] = "....";
-    morseStrings['I'] = "..";
-    morseStrings['J'] = ".---";
-    morseStrings['K'] = "-.-";
-    morseStrings['L'] = ".-..";
-    morseStrings['M'] = "--";
-    morseStrings['N'] = "-.";
-    morseStrings['O'] = "---";
-    morseStrings['P'] = ".--.";
-    morseStrings['Q'] = "--.-";
-    morseStrings['R'] = ".-.";
-    morseStrings['S'] = "...";
-    morseStrings['T'] = "-";
-    morseStrings['U'] = "..-";
-    morseStrings['V'] = "...-";
-    morseStrings['W'] = ".--";
-    morseStrings['X'] = "-..-";
-    morseStrings['Y'] = "-.--";
-    morseStrings['Z'] = "--..";
-    morseStrings['0'] = "-----";
-    morseStrings['1'] = ".----";
-    morseStrings['2'] = "..---";
-    morseStrings['3'] = "...--";
-    morseStrings['4'] = "....-";
-    morseStrings['5'] = ".....";
-    morseStrings['6'] = "-....";
-    morseStrings['7'] = "--...";
-    morseStrings['8'] = "---..";
-    morseStrings['9'] = "----.";
+    initConversion();
+    if (conversionType == "-m")
+    {
+        int count = convertToMorse(inputFile, outputFile);
+        printResults(inputFile, outputFile, count);
+    }
+    else
+    {
+        convertToEnglish(inputFile, outputFile);
+    }
+
+    return 0;
 }
