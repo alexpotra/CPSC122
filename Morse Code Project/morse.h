@@ -12,4 +12,4 @@ void printResults(const string &inputFile, const string &outputFile, int numLett
 
 int convertToMorse(const string &inputFile, const string &outputFile);
 
-void convertToEnglish(const string &inputFile, const string &outputFile);
+int convertToEnglish(const string &inputFile, const string &outputFile);

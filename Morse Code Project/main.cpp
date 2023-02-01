@@ -14,7 +14,8 @@ int main()
     }
     else
     {
-        convertToEnglish(inputFile, outputFile);
+        int count = convertToEnglish(inputFile, outputFile);
+        printResults(inputFile, outputFile, count);
     }
 
     return 0;

@@ -118,6 +118,69 @@ int convertToMorse(const string &inputFile, const string &outputFile)
     return numLetters;
 }
 
-void convertToEnglish(const string &inputFile, const string &outputFile)
+char searchMorse(const string &morse)
 {
+    if (morse.empty() || morse == "/")
+    {
+        return ' ';
+    }
+    for (char i = 32; i < 91; i++)
+    {
+        if (morseStrings[i] == morse)
+        {
+            return i;
+        }
+    }
+    return 0;
+}
+
+int convertToEnglish(const string &inputFile, const string &outputFile)
+{
+    int numLetters = 0;
+
+    // set up & check input file
+    ifstream input;
+    input.open(inputFile);
+    if (!input.is_open())
+    {
+        cout << "Input file failed to open" << endl;
+        exit(-1);
+    }
+
+    // set up & check output file
+    ofstream output;
+    output.open(outputFile);
+    if (!output.is_open())
+    {
+        cout << "Output file failed to open" << endl;
+        exit(-1);
+    }
+
+    // read morse code from file
+    char ch;
+    string morse;
+    while (input.get(ch))
+    {
+        if (ch != ' ' && ch != '\n')
+        {
+            morse += ch;
+        }
+        else
+        {
+            numLetters++;
+            output << searchMorse(morse);
+            if (ch == '\n')
+            {
+                numLetters++;
+                output << endl;
+            }
+            morse.clear();
+        }
+    }
+
+    // close files
+    input.close();
+    output.close();
+
+    return numLetters;
 }
