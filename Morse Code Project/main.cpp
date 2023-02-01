@@ -1,3 +1,11 @@
+/*
+ Name: Alexander Potra
+ Class: CPSC 122, Spring 2023
+ Date: January 31, 2023
+ Programming Assignment: PA1                                                                      
+ Description: This program converts english text to Morse code or vice versa.
+*/
+
 #include "morse.h"
 
 int main()

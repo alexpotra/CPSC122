@@ -1,7 +1,24 @@
+/*
+ Name: Alexander Potra
+ Class: CPSC 122, Spring 2023
+ Date: January 31, 2023
+ Programming Assignment: PA1                                                                      
+ Description: This file contains conversion functions and utility functions.
+*/
+
 #include "morse.h"
 
+// array with English character to Morse code mapping
 string morseStrings[91];
 
+/*************************************************************
+ * Function: initConversion ()                  	
+ * Date Created: 1/30/23                  	        
+ * Date Last Modified: 1/31/23                        
+ * Description: This function initializes the internal array.                    	
+ * Input parameters: None    	
+ * Returns: None           	      
+ *************************************************************/
 void initConversion()
 {
     morseStrings['A'] = ".-";
@@ -44,6 +61,14 @@ void initConversion()
     morseStrings['\n'] = "\n";
 }
 
+/*************************************************************
+ * Function: printFile ()                  	
+ * Date Created: 1/30/23                  	        
+ * Date Last Modified: 1/31/23                        
+ * Description: This function prints the contents of the file.                    	
+ * Input parameters: file name    	
+ * Returns: None           	      
+ *************************************************************/
 void printFile(const string &fileName)
 {
     // set up & check input file
@@ -68,6 +93,16 @@ void printFile(const string &fileName)
     input.close();
 }
 
+/*************************************************************
+ * Function: printResults ()                  	
+ * Date Created: 1/30/23                  	        
+ * Date Last Modified: 1/31/23                        
+ * Description: This function outputs the conversion results 
+ *              to standard output.                    	
+ * Input parameters: input file, output file, total character 
+ *              count    	
+ * Returns: None           	      
+ *************************************************************/
 void printResults(const string &inputFile, const string &outputFile, int numLetters)
 {
     printFile(inputFile);
@@ -76,6 +111,15 @@ void printResults(const string &inputFile, const string &outputFile, int numLett
          << "Total characters converted successfully (including newline and white spaces): " << numLetters << endl;
 }
 
+/*************************************************************
+ * Function: convertToMorse ()                  	
+ * Date Created: 1/30/23                  	        
+ * Date Last Modified: 1/31/23                        
+ * Description: This function converts English text to Morse 
+ *              code.                    	
+ * Input parameters: input file, output file    	
+ * Returns: number of characters converted           	      
+ *************************************************************/
 int convertToMorse(const string &inputFile, const string &outputFile)
 {
     int numLetters = 0;
@@ -118,6 +162,15 @@ int convertToMorse(const string &inputFile, const string &outputFile)
     return numLetters;
 }
 
+/*************************************************************
+ * Function: searchMorse ()                  	
+ * Date Created: 1/30/23                  	        
+ * Date Last Modified: 1/31/23                        
+ * Description: This function searches the English character 
+ *              corresponding to the Morse equivalent.                   	
+ * Input parameters: Morse character    	
+ * Returns: English character          	      
+ *************************************************************/
 char searchMorse(const string &morse)
 {
     if (morse.empty() || morse == "/")
@@ -134,6 +187,15 @@ char searchMorse(const string &morse)
     return 0;
 }
 
+/*************************************************************
+ * Function: convertToEnglish ()                  	
+ * Date Created: 1/30/23                  	        
+ * Date Last Modified: 1/31/23                        
+ * Description: This function converts Morse code to English
+ *              text.                    	
+ * Input parameters: input file, output file    	
+ * Returns: number of characters converted           	      
+ *************************************************************/
 int convertToEnglish(const string &inputFile, const string &outputFile)
 {
     int numLetters = 0;
