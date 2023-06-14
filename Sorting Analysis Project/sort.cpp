@@ -40,9 +40,9 @@ vector<int> makeAscendingVector(size_t size)
 vector<int> makeDescendingVector(size_t size)
 {
     vector<int> result(size);
-    for (int i = size - 1; i >= 0; i--)
+    for (int i = 0; i < size; i++)
     {
-        result[i] = i;
+        result[i] = size - i - 1;
     }
 
     return result;
